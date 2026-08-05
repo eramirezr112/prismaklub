@@ -1,26 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* ── Milker custom font ─────────────────────────────────── */
+@font-face {
+  font-family: 'Milker';
+  src: url('/fonts/Milker.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Brand tokens ───────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg:      #0E0E0E;
+  --surface: #181818;
+  --card:    #1F1F1F;
+
+  /* Brand palette — from ico-prismaklub-1 & 2 */
+  --crimson:       #8B1A1A;   /* deep red background (ico-1) */
+  --crimson-light: #A52020;   /* hover state */
+  --crimson-dark:  #6B1313;   /* pressed / shade */
+  --cream:         #F0EAD2;   /* icon symbol + logo text */
+  --cream-dim:     #B8AF9A;   /* secondary text */
+  --cream-faint:   #2E2A23;   /* subtle tinted surface */
+
+  /* Utility */
+  --border:        #272727;
+  --border-light:  #333333;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-bg:            var(--bg);
+  --color-surface:       var(--surface);
+  --color-card:          var(--card);
+  --color-crimson:       var(--crimson);
+  --color-crimson-light: var(--crimson-light);
+  --color-crimson-dark:  var(--crimson-dark);
+  --color-cream:         var(--cream);
+  --color-cream-dim:     var(--cream-dim);
+  --color-cream-faint:   var(--cream-faint);
+  --color-border:        var(--border);
+
+  /* Typography */
+  --font-milker: 'Milker', sans-serif;
+  --font-body:   'Poppins', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ── Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--crimson-dark); border-radius: 2px; }
+
+/* Selection */
+::selection { background: var(--crimson); color: var(--cream); }
+
+/* Focus rings */
+:focus-visible { outline: 2px solid var(--crimson-light); outline-offset: 2px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
