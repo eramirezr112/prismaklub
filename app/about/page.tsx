@@ -107,12 +107,13 @@ export default function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection direction="right" className="space-y-4">
-            <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="relative w-full overflow-hidden">
               <Image
                 src="/assets/WEB y PRESSKIT/DSC03757.jpg"
                 alt="Prismaklub — foto de banda"
-                fill
-                className="object-cover"
+                width={1600}
+                height={2000}
+                className="block w-full h-auto object-contain"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 border border-[#8B1A1A]/20" />
@@ -139,33 +140,34 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      <section
-        className="pb-16 px-6 border-b border-[#1A1A1A]"
-        aria-label="Music header"
-      >
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-['Milker'] text-5xl md:text-7xl text-[#F0EAD2]"
-          >
-            {locale === "en" ? "The Sound" : "El sonido"}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-[#B8AF9A] mt-3 text-lg"
-          >
-            {locale === "en"
-              ? "Rock with melodies that stick, pop without compromise, and one foot always planted in britpop. PRISMAKLUB sounds like what might happen if The Beatles and Steely Dan had grown up listening to Oasis: layered guitars searching for each other, vocal harmonies that pull and release, and a rhythm section that gives everything exactly the space it needs to breathe. Nothing extra. Nothing missing."
-              : "Rock con melodías que no se olvidan, pop sin concesiones y un pie siempre puesto en el britpop. PRISMAKLUB suena como si The Beatles y Steely Dan hubieran crecido escuchando Oasis: capas de guitarras que se buscan, armonías vocales que se tensan y relajan, y una sección rítmica que da el espacio exacto para que todo respire. Nada sobra. Nada falta."}
-          </motion.p>
+            <section
+              className="pt-16 pb-16 border-b border-[#1A1A1A]"
+              aria-label="Music header"
+            >
+              <div className="relative z-10 max-w-7xl mx-auto">
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="font-['Milker'] text-5xl md:text-7xl text-[#F0EAD2]"
+                >
+                  {locale === "en" ? "The Sound" : "El sonido"}
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.25 }}
+                  className="text-[#B8AF9A] mt-3 text-lg"
+                >
+                  {locale === "en"
+                    ? "Rock with melodies that stick, pop without compromise, and one foot always planted in britpop. PRISMAKLUB sounds like what might happen if The Beatles and Steely Dan had grown up listening to Oasis: layered guitars searching for each other, vocal harmonies that pull and release, and a rhythm section that gives everything exactly the space it needs to breathe. Nothing extra. Nothing missing."
+                    : "Rock con melodías que no se olvidan, pop sin concesiones y un pie siempre puesto en el britpop. PRISMAKLUB suena como si The Beatles y Steely Dan hubieran crecido escuchando Oasis: capas de guitarras que se buscan, armonías vocales que se tensan y relajan, y una sección rítmica que da el espacio exacto para que todo respire. Nada sobra. Nada falta."}
+                </motion.p>
+              </div>
+            </section>
+
+          </AnimatedSection>
         </div>
       </section>
 

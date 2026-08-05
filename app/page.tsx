@@ -160,12 +160,13 @@ export default function HomePage() {
       <section className="py-28 px-6" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection direction="left">
-            <div className="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 overflow-hidden">
+            <div className="relative w-full overflow-hidden">
               <Image
                 src="/assets/WEB y PRESSKIT/DSC03570.jpg"
                 alt="Prismaklub — foto de banda"
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                width={1200}
+                height={1600}
+                className="block w-full h-auto object-contain grayscale hover:grayscale-0 transition-all duration-700"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 border border-[#8B1A1A]/30" />
