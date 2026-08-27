@@ -18,11 +18,15 @@ const BAND_PHOTOS = [
 ];
 
 const UPCOMING_EVENTS = [
-  { date: 'JUN 25', venue: 'Concierto de Lanzamiento', city: 'San José, CR', sold: false },
+  { date: 'NOV 19', venue: 'Concierto de Lanzamiento', city: 'London Room, San José, CR', sold: false },
+];
+
+const UPCOMING_EVENTS_EN = [
+  { date: 'NOV 19', venue: 'Launch Concert', city: 'London Room, San José, CR', sold: false },
 ];
 
 export default function HomePage() {
-  const { t } = useLang();
+  const { t, locale } = useLang();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 600], ['0%', '20%']);
@@ -138,19 +142,27 @@ export default function HomePage() {
       {UPCOMING_EVENTS.length > 0 && (
         <section className="bg-[#8B1A1A] py-4 px-6 overflow-hidden" aria-label="Próximos eventos">
           <div className="max-w-7xl mx-auto flex items-center gap-8 overflow-x-auto">
-            {UPCOMING_EVENTS.map((ev, i) => (
+            {locale === "en" ? UPCOMING_EVENTS_EN.map((ev, i) => (
               <div key={i} className="flex items-center gap-3 shrink-0">
                 <Calendar size={13} className="text-[#F0EAD2]/70" aria-hidden="true" />
                 <span className="font-semibold text-[#F0EAD2] text-sm tracking-wide">{ev.date}</span>
                 <span className="text-[#F0EAD2]/80 text-sm">{ev.venue}</span>
                 <span className="text-[#F0EAD2]/50 text-xs">{ev.city}</span>
-              </div>
+              </div>              
+            )) : UPCOMING_EVENTS.map((ev, i) => (
+              <div key={i} className="flex items-center gap-3 shrink-0">
+                <Calendar size={13} className="text-[#F0EAD2]/70" aria-hidden="true" />
+                <span className="font-semibold text-[#F0EAD2] text-sm tracking-wide">{ev.date}</span>
+                <span className="text-[#F0EAD2]/80 text-sm">{ev.venue}</span>
+                <span className="text-[#F0EAD2]/50 text-xs">{ev.city}</span>
+              </div>              
             ))}
+
             <Link
               href="/events"
               className="shrink-0 flex items-center gap-1 text-[#F0EAD2] font-semibold text-sm hover:gap-2 transition-all duration-200 ml-4 cursor-pointer group"
             >
-              Ver todos <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true" />
+              {locale === "en" ? "See all" : "Ver todos"} <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true" />
             </Link>
           </div>
         </section>
@@ -233,7 +245,9 @@ export default function HomePage() {
               <h2 id="music-heading" className="font-['Milker'] text-4xl md:text-5xl text-[#F0EAD2] mb-4">
                 {t.music.releaseTitle}
               </h2>
-              <p className="text-[#B8AF9A] leading-relaxed mb-8">{t.music.releaseDesc}</p>
+              <p className="text-[#B8AF9A] leading-relaxed mb-4">{t.music.releaseDesc}</p>
+              <p className="text-[#B8AF9A] leading-relaxed mb-8">{t.music.releaseDesc2}</p>
+              {/*
               <div className="flex gap-4 flex-wrap">
                 <Link
                   href="/music"
@@ -248,21 +262,22 @@ export default function HomePage() {
                   {t.music.listenYoutube}
                 </Link>
               </div>
+              */}
             </AnimatedSection>
 
             <AnimatedSection direction="right" delay={0.15}>
               <div className="relative aspect-square bg-[#1F1F1F] border border-[#272727] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B1A1A]/20 to-transparent" />
                 <Image
-                  src="/ico-prismaklub-1.png"
-                  alt="Prismaklub — ícono de la banda"
-                  width={240}
-                  height={240}
-                  className="relative z-10 w-1/2 h-auto object-contain"
+                  src="/assets/discografia/portada-ep-deja-de-correr.png"
+                  alt="Deja de Correr — portada del EP"
+                  width={1254}
+                  height={1254}
+                  className="relative z-10 w-full h-auto object-contain"
                 />
                 <div className="absolute bottom-6 left-0 right-0 text-center">
                   <p className="font-['Milker'] text-[#F0EAD2] text-lg tracking-widest">DEJA DE CORRER</p>
-                  <p className="text-[#8B1A1A] text-xs tracking-widest uppercase mt-1">JUL · 2026</p>
+                  <p className="text-[#8B1A1A] text-xs tracking-widest uppercase mt-1">SEP · 2026</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -292,19 +307,21 @@ export default function HomePage() {
           <AnimatedSection delay={0.1}>
             <div className="border-t border-[#1E1E1E] py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:bg-[#111111] transition-colors duration-200 px-4 -mx-4">
               <div className="flex items-center gap-6">
-                <span className="font-['Milker'] text-2xl text-[#8B1A1A] min-w-[60px]">JUN 25</span>
+                <span className="font-['Milker'] text-2xl text-[#8B1A1A] min-w-[60px]">NOV 19</span>
                 <div className="w-px h-12 bg-[#272727] hidden md:block" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-[#F0EAD2] text-lg">{t.events.launch}</p>
-                  <p className="text-[#B8AF9A] text-sm">San José, Costa Rica</p>
+                  <p className="text-[#B8AF9A] text-sm">London Room, San José, Costa Rica</p>
                 </div>
               </div>
+              {/* 
               <Link
                 href="/events"
                 className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase border border-[#8B1A1A] text-[#F0EAD2] px-5 py-2.5 hover:bg-[#8B1A1A] transition-all duration-200 cursor-pointer min-h-[44px]"
               >
                 {t.events.tickets}
               </Link>
+              */}
             </div>
           </AnimatedSection>
         </div>
@@ -315,7 +332,6 @@ export default function HomePage() {
         <AnimatedSection className="max-w-3xl mx-auto text-center">
           <div className="border border-[#8B1A1A]/40 p-12 relative">
             <div className="absolute top-0 left-8 right-8 h-px bg-[#8B1A1A]" aria-hidden="true" />
-            <p className="text-[#8B1A1A] text-xs font-semibold uppercase tracking-[0.4em] mb-4">Booking</p>
             <h2 id="booking-cta" className="font-['Milker'] text-3xl md:text-4xl text-[#F0EAD2] mb-4">
               {t.contact.title}
             </h2>

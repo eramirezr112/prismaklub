@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import { useLang } from '@/lib/i18n';
 import { Send, CheckCircle, Share2, Play, Mail, Phone } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaSpotify, FaYoutube } from 'react-icons/fa6';
 
 export default function ContactPage() {
   const { t, locale } = useLang();
@@ -24,6 +25,14 @@ export default function ContactPage() {
     await new Promise(r => setTimeout(r, 1200));
     setStatus('success');
   };
+
+  const socials = [
+    { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com/prismaklubcr' },
+    { icon: FaYoutube, label: 'YouTube', href: 'https://www.youtube.com/@prismaklub' },
+    //{ icon: FaSpotify, label: 'Spotify', href: 'https://open.spotify.com' },
+    { icon: FaFacebookF, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61581907203890' },
+  ];
+  
 
   return (
     <>
@@ -202,7 +211,7 @@ export default function ContactPage() {
                   className="flex items-center gap-2 text-[#B8AF9A] hover:text-[#F0EAD2] transition-colors duration-200 cursor-pointer text-sm"
                 >
                   <Phone size={13} aria-hidden="true" />
-                  Esteban Ramírez · +506 8876-1823
+                  Ariel Badilla · +506 7022-7582
                 </a>
               </div>
             </div>
@@ -213,19 +222,16 @@ export default function ContactPage() {
                 {locale === 'en' ? 'Social' : 'Redes Sociales'}
               </p>
               <div className="space-y-3">
-                {[
-                  { icon: Share2, label: 'Instagram', handle: '@prismaklub', href: 'https://instagram.com/prismaklub' },
-                  { icon: Play, label: 'YouTube', handle: '@prismaklub', href: 'https://youtube.com/@prismaklub' },
-                ].map(({ icon: Icon, label, handle, href }) => (
+                {socials.map(({ icon: Icon, label, href }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-[#B8AF9A] hover:text-[#F0EAD2] transition-colors duration-200 cursor-pointer text-sm"
-                    aria-label={`${label}: ${handle}`}
+                    aria-label={label}
                   >
-                    <Icon size={13} aria-hidden="true" /> {handle}
+                    <Icon size={13} aria-hidden="true" />{label}
                   </a>
                 ))}
               </div>
@@ -244,13 +250,6 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {/* Response time */}
-            <div className="bg-[#181818] border border-[#272727] p-5">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#8B1A1A] mb-2">
-                {t.contact.responseTime}
-              </p>
-              <p className="text-[#B8AF9A] text-sm leading-relaxed">{t.contact.responseDesc}</p>
-            </div>
           </AnimatedSection>
         </div>
       </section>
