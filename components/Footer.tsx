@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Share2, Music2, Link2, Play, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaSpotify, FaYoutube } from 'react-icons/fa6';
 import { useLang } from '@/lib/i18n';
 
 export default function Footer() {
@@ -18,10 +19,10 @@ export default function Footer() {
   ];
 
   const socials = [
-    { icon: Share2, label: 'Instagram', href: 'https://instagram.com/prismaklub' },
-    { icon: Play, label: 'YouTube', href: 'https://youtube.com/@prismaklub' },
-    { icon: Music2, label: 'Spotify', href: 'https://open.spotify.com' },
-    { icon: Link2, label: 'Facebook', href: 'https://facebook.com/prismaklub' },
+    { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com/prismaklubcr' },
+    { icon: FaYoutube, label: 'YouTube', href: 'https://www.youtube.com/@prismaklub' },
+    //{ icon: FaSpotify, label: 'Spotify', href: 'https://open.spotify.com' },
+    { icon: FaFacebookF, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61581907203890' },
   ];
 
   return (
@@ -50,9 +51,6 @@ export default function Footer() {
 
           {/* Nav links */}
           <nav aria-label="Footer navigation">
-            <p className="text-xs font-semibold tracking-widest text-[#B8AF9A] uppercase mb-4">
-              Navegación
-            </p>
             <div className="flex flex-col gap-2">
               {navLinks.map(({ href, label }) => (
                 <Link
@@ -86,13 +84,17 @@ export default function Footer() {
               ))}
             </div>
             {/* Icon */}
-            <Image
-              src="/ico-prismaklub-2.png"
-              alt="Prismaklub icon"
-              width={48}
-              height={48}
-              className="opacity-30 hover:opacity-60 transition-opacity duration-300"
-            />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-[#B8AF9A] hover:text-[#F0EAD2] transition-colors duration-200 cursor-pointer text-sm">
+              <Image
+                src="/ico-prismaklub-2.png"
+                alt="Prismaklub icon"
+                width={48}
+                height={48}
+                className="opacity-30 hover:opacity-60 transition-opacity duration-300"
+              />
+            </Link>
           </div>
         </div>
 

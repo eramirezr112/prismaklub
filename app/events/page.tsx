@@ -8,12 +8,12 @@ import Link from 'next/link';
 
 const EVENTS = [
   {
-    day: '25',
-    month: 'JUN',
+    day: '19',
+    month: 'NOV',
     year: '2026',
-    time: '8:00 PM',
-    venue: 'Concierto de Lanzamiento — "Deja de Correr"',
-    city: 'San José, Costa Rica',
+    time: '7:00 PM',
+    venue: '"Deja de Correr"',
+    city: 'London Room, San José, Costa Rica',
     description: 'El debut de Prismaklub en vivo. Una noche que marca el inicio de todo.',
     descriptionEn: 'Prismaklub\'s live debut. A night that marks the beginning of everything.',
     tickets: 'https://example.com/tickets',
@@ -102,6 +102,7 @@ export default function EventsPage() {
                     </div>
 
                     {/* CTA */}
+                    {/* 
                     <div className="md:shrink-0">
                       {ev.sold ? (
                         <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#444] border border-[#272727] px-5 py-2.5">
@@ -119,6 +120,7 @@ export default function EventsPage() {
                         </a>
                       )}
                     </div>
+                    */}
                   </div>
                 </AnimatedSection>
               ))}

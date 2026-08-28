@@ -91,8 +91,7 @@ export default function AboutPage() {
             </p>
             <p className="text-[#B8AF9A] leading-relaxed">{t.about.body}</p>
             <p className="text-[#B8AF9A] leading-relaxed">{t.about.body2}</p>
-            <p className="text-[#B8AF9A] leading-relaxed">{t.about.body3}</p>
-            <p className="text-[#B8AF9A] leading-relaxed">{t.about.body4}</p>
+            <p className="text-[#B8AF9A] leading-relaxed">{t.about.body3}</p>            
             <p className="text-[#B8AF9A] leading-relaxed">{t.about.body5}</p>
 
             {/* Blockquote */}
@@ -160,9 +159,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.6, delay: 0.25 }}
                   className="text-[#B8AF9A] mt-3 text-lg"
                 >
-                  {locale === "en"
-                    ? "Rock with melodies that stick, pop without compromise, and one foot always planted in britpop. PRISMAKLUB sounds like what might happen if The Beatles and Steely Dan had grown up listening to Oasis: layered guitars searching for each other, vocal harmonies that pull and release, and a rhythm section that gives everything exactly the space it needs to breathe. Nothing extra. Nothing missing."
-                    : "Rock con melodías que no se olvidan, pop sin concesiones y un pie siempre puesto en el britpop. PRISMAKLUB suena como si The Beatles y Steely Dan hubieran crecido escuchando Oasis: capas de guitarras que se buscan, armonías vocales que se tensan y relajan, y una sección rítmica que da el espacio exacto para que todo respire. Nada sobra. Nada falta."}
+                  {t.about.body4}
                 </motion.p>
               </div>
             </section>
@@ -244,7 +241,8 @@ export default function AboutPage() {
                 </div>
               </div>
               <a
-                href="mailto:contacto@prismaklub.com?subject=Press Kit"
+                href="/assets/PRISMAKLUB_EPK.pdf"
+                target="_blank"
                 className="inline-flex items-center justify-center px-8 py-3 border border-[#8B1A1A] text-[#F0EAD2] text-sm font-semibold tracking-wide hover:bg-[#8B1A1A] transition-all duration-200 cursor-pointer whitespace-nowrap min-h-[44px]"
               >
                 {t.about.pressKit}
